@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Result from './ResultComponent';
-
+import {GIPHY_KEY} from './GiphyKey';
 
 class Main extends Component{
     constructor(props){
@@ -19,9 +19,9 @@ class Main extends Component{
     }
     async handleSubmit(event) {
         let keyword = this.state.search;
-        let GIPHY_KEY = '1bHTrKJ3Yt6q67hfuuog4YrwJOpQRoOB';
+        let KEY = GIPHY_KEY;
         event.preventDefault();
-        this.setState({images:await fetch(`http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${GIPHY_KEY}&limit=21`).then (response => response.json())})
+        this.setState({images:await fetch(`http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${KEY}&limit=21`).then (response => response.json())})
         //console.log(this.state.images);
     }
    
