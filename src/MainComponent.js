@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
 import Result from './ResultComponent';
 import {GIPHY_KEY} from './GiphyKey';
+import { Form, Label, Input} from 'reactstrap';
+
+/*function RenderImages({images}){
+    if(images != null){
+        images.forEach((image)=>{
+            return(
+                <div>
+                   Hello
+                </div>
+            )
+        });
+    }
+    else{
+        return(
+            <div></div>
+        )
+    }
+}*/
+
 
 class Main extends Component{
     constructor(props){
@@ -27,18 +46,18 @@ class Main extends Component{
    
     render(){
         return(
-            <div>
+            <div className="col-12">
                 <h1>GIPHY Search</h1>
-                <form id="searchform" onSubmit={this.handleSubmit}>
-                    <label>
+                <Form id="searchform" onSubmit={this.handleSubmit}>
+                    <Label>
                         Search:
-                        <input type="search" id="searchgif" value={this.state.search} onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        <input type="submit" id="searchbutton" value="submit" />
-                    </label>
-                </form>
-                <Result images={this.state.images.data}/>
+                        <Input type="search" id="searchgif" placeholder="Serach" value={this.state.search} onChange={this.handleChange}/>
+                    </Label>
+                    <Label>
+                        <Input type="submit" id="searchbutton" value="submit" />
+                    </Label>
+                    <Result data={this.state.images.data}/>
+                </Form>
             </div>
         )
     }

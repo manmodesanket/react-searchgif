@@ -1,54 +1,31 @@
 import React,{Component} from 'react';
+import { Media, Container, Row, Col  } from 'reactstrap';
+import './Result.css';
 
-
-/*function appendImage(img){
-    let gifs = document.getElementById("result");
-    let div = document.createElement('div');
-    div.className = "img-wrapper";
-    let div1 = document.createElement('div');
-    div1.className = "inner";
-    div1.appendChild(img);
-    div.appendChild(div1);
-    gifs.appendChild(div);
-}*/
-
-/*function resultfun(images){
-    //result.
-    /*for(let i=0;i<images.length;i++)
-    {
-        let img = new Image();
-        img.src = images[i].url;
-        console.log(img)
-    }
-    //console.log(images.length);
-    console.log(images);
-}*/
-
-
-
-function result(images){
-    
-    if(images!=null)
-    {
-        images.forEach((image) => {
-            let img = new Image();
-            img.src = image.url;
-            img.alt = image.title
-            console.log(img)
-        });
-    }
-    //console.log(images);
-}
 
 class Result extends Component{
-    constructor(props){
-        super(props);
+    RenderImage(url,title,id){
+        //console.log(url);
+        return(
+            <div key={id}>
+                <Col>
+                    <Media object src={url} alt={title} className="image"/>
+                </Col>
+            </div>
+        )   
     }
     render(){
+        let images = [];
+        if(this.props.data!=null)
+        {
+            images = this.props.data;
+        }
         return(
             <div>
                 GIF's
-                <div className="container col-12">{result(this.props.images)}</div>
+                <Container>
+                    {images.map(image => this.RenderImage(image.images.original.url,image.title,image.id))}
+                </Container>
             </div>
         )
     }
