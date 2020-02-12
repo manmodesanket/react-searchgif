@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import { Media } from 'reactstrap';
 import Gallery from 'react-grid-gallery';
-import './Result.css';
 
 
 class Result extends Component{
@@ -30,7 +29,6 @@ class Result extends Component{
         //console.log(resultArray);
         return(
             <div>
-                GIF's
                 <Gallery images={resultArray}/>
             </div>
         )

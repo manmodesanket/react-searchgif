@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Result from './ResultComponent';
 import {GIPHY_KEY} from './GiphyKey';
-import { Form, Input, Label } from 'reactstrap';
+import { Navbar, NavbarBrand, Form, Input, Label, Button } from 'reactstrap';
 
 
 /*function RenderImages({images}){
@@ -54,17 +54,20 @@ class Main extends Component{
     render(){
         return(
             <div className="col-12">
-                <h1>GIPHY Search</h1>
-                <Form id="searchform" onSubmit={this.handleSubmit}>
-                    <Label>
-                        Search:
-                        <Input type="search" id="searchgif" placeholder="Serach" value={this.state.search} onChange={this.handleChange}/>
-                    </Label>
-                    <Label>
-                        <Input type="submit" id="searchbutton" value="submit" />
-                    </Label>
-                    <Result data={this.state.images.data}/>
-                </Form>
+                <Navbar dark color="primary">
+                    <div className="container">
+                        <NavbarBrand href="/">GIPHY Search</NavbarBrand>
+                        <Form id="searchform" onSubmit={this.handleSubmit} inline>
+                            <Label>
+                                <Input type="search" id="searchgif" placeholder="Search" value={this.state.search} onChange={this.handleChange}/>
+                            </Label>
+                            <Label>
+                                <Button>Submit</Button>
+                            </Label>
+                        </Form>
+                    </div>
+                </Navbar>
+                <Result data={this.state.images.data}/>
             </div>
         )
     }
