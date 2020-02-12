@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Result from './ResultComponent';
 import {GIPHY_KEY} from './GiphyKey';
-import { Form, Label, Input} from 'reactstrap';
+import { Form, Input, Label } from 'reactstrap';
+
 
 /*function RenderImages({images}){
     if(images != null){
@@ -26,10 +27,12 @@ class Main extends Component{
         super(props);
         this.state = {
             search: '',
-            images: {}
+            images: {},
+            isNavOpen: false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleNav = this.toggleNav.bind(this);
     }
     handleChange(event){
         this.setState(
@@ -40,10 +43,14 @@ class Main extends Component{
         let keyword = this.state.search;
         let KEY = GIPHY_KEY;
         event.preventDefault();
-        this.setState({images:await fetch(`http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${KEY}&limit=21`).then (response => response.json())})
+        this.setState({images:await fetch(`http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${KEY}&limit=20`).then (response => response.json())})
         //console.log(this.state.images);
     }
-   
+    toggleNav() {
+        this.setState({
+          isNavOpen: !this.state.isNavOpen
+        });
+    }   
     render(){
         return(
             <div className="col-12">

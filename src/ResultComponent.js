@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import { Media, Container, Row, Col  } from 'reactstrap';
+import { Media } from 'reactstrap';
+import Gallery from 'react-grid-gallery';
 import './Result.css';
 
 
@@ -8,9 +9,9 @@ class Result extends Component{
         //console.log(url);
         return(
             <div key={id}>
-                <Col>
-                    <Media object src={url} alt={title} className="image"/>
-                </Col>
+                <div>
+                    <Media object src={url} alt={title}/>
+                </div>
             </div>
         )   
     }
@@ -20,12 +21,17 @@ class Result extends Component{
         {
             images = this.props.data;
         }
+        let resultArray = [];
+        images.map(image =>{
+            let object = {src:image.images.original.url, thumbnail:image.images.original.url, thumbnailWidth:"200px",caption:image.title, 
+            id:image.id}
+            resultArray = [ ...resultArray, object ];
+        });
+        //console.log(resultArray);
         return(
             <div>
                 GIF's
-                <Container>
-                    {images.map(image => this.RenderImage(image.images.original.url,image.title,image.id))}
-                </Container>
+                <Gallery images={resultArray}/>
             </div>
         )
     }
