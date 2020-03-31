@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Result from './ResultComponent';
-import {GIPHY_KEY} from './GiphyKey';
+import {GIPHY_KEY} from './key/GiphyKey';
 import { Navbar, NavbarBrand, Form, Input, Label, Button } from 'reactstrap';
 
 
